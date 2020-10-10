@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	
+	<definition name="base.mainPageDefination" template="/WEB-INF/jsp/loginTemplate.jsp">
+<!-- 		<put-attribute name="title" value=""></put-attribute>
+ -->	
+ <!-- 	<put-attribute name="loginheader" value="/WEB-INF/jsp/loginHeader.jsp"></put-attribute>
+ -->		
+ 
+ <put-attribute name="body" value=""></put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/jsp/footer.jsp"></put-attribute>
+	</definition>
+
+	<definition name="base.definition" template="/WEB-INF/jsp/mainTemplate.jsp">
+		<!-- <put-attribute name="title" value=""></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/jsp/header.jsp"></put-attribute>
+		 --><!-- <put-attribute name="menu" value="/WEB-INF/jsp/menu.jsp"></put-attribute> --> 
+		<put-attribute name="body" value=""></put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/jsp/footer.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="frmClientLogin" extends="base.mainPageDefination">
+		<put-attribute name="title" value="Client Login"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/jsp/frmClientLogin.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="frmLogin" extends="base.mainPageDefination">
+		<put-attribute name="title" value="Login"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/jsp/frmLogin.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="frmMenuItemPage" extends="base.definition">
+		<put-attribute name="title" value="Menu Item"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/jsp/frmMenuItemPage.jsp"></put-attribute>
+	</definition>
+	<definition name="frmPOSBillSettlement" extends="base.definition">
+		<put-attribute name="title" value="Bill Settlement"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/jsp/frmPOSBillSettlement.jsp"></put-attribute>
+	</definition>
+	
+    	<definition name="frmMenuItem" extends="base.definition">
+		<put-attribute name="title" value="Menu Item"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/jsp/frmMenuItemPageContainer.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="frmMainFormWithLoadTable" extends="base.definition">
+		<put-attribute name="title" value="Table Selection"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/jsp/frmMainFormWithLoadTable.jsp"></put-attribute>
+	</definition>
+	<definition name="frmConfirmOrder" extends="base.definition">
+		<put-attribute name="title" value="Confirm Order"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/jsp/frmConfirmOrder.jsp"></put-attribute>
+	</definition>
+	<definition name="frmLicenseExpirePage" extends="base.definition">
+		<put-attribute name="title" value="Main Form"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/jsp/frmLicenseExpirePage.jsp"></put-attribute>
+	</definition>
+	
+	
+	<definition name="frmPOSMakeBill" extends="base.definition">
+		<put-attribute name="title" value="Make Bill"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/jsp/frmPOSMakeBill.jsp"></put-attribute>
+	</definition>
+    
+	<definition name="frmModeOfOpearation" extends="base.definition">
+		<put-attribute name="title" value="Mode Of Operation"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/jsp/frmModeOfOperation.jsp"></put-attribute>
+	</definition>
+	
+    <definition name="frmSingleItemPage" extends="base.definition">
+		<put-attribute name="title" value="Single Item Page"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/jsp/frmSingleItemPage.jsp"></put-attribute>
+	</definition>
+     
+     <definition name="frmHomeDelivery" extends="base.definition">
+		<put-attribute name="title" value="Customer Details"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/jsp/frmHomeDelivery.jsp"></put-attribute>
+	</definition>
+	
+     <definition name="frmReservation" extends="base.definition">
+		<put-attribute name="title" value="Reservation"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/jsp/frmReservation.jsp"></put-attribute>
+	</definition>
+    <definition name="frmFeedback" extends="base.definition">
+		<put-attribute name="title" value="Feedback"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/jsp/frmFeedback.jsp"></put-attribute>
+	</definition>
+	<definition name="frmLoadGroup" extends="base.definition">
+		<put-attribute name="title" value="Group Selection"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/jsp/frmLoadGroup.jsp"></put-attribute>
+	</definition>
+	
+    
+</tiles-definitions>

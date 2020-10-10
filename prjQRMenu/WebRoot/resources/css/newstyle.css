@@ -1,0 +1,216 @@
+ /*new  style css for forms  */
+ 
+ 
+ @font-face {
+	 font-family:'trebuchet ms';
+	src: url("../images/Calibri.ttf") local(Calibri) format('opentype');
+	margin: 0;
+	padding: 0;
+}
+body {
+	width: 100%;
+    height: 100%;
+    font-family:"trebuchet ms";
+  }
+    new css
+These are the styles for
+the header
+****************************
+***************************/
+
+.row container{
+	 padding-top: 56px;
+  	min-height: 100%;
+}
+.app-header {
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
+  max-height: 56px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+}
+.app-nav {
+  display: flex;
+  justify-content: space-between;
+  background:#fff;
+}
+
+.app-nav .left-menu {
+  display: flex;
+}
+.app-nav .right-menu ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin-right: 5px;
+  margin-bottom:0px;
+}
+
+.app-nav .right-menu ul li {
+  margin-left: 8px;
+}
+.app-nav .right-menu ul li .menu-link {
+  display: block;
+  color: #9a9daf;
+  font-size: 24px;
+  padding: 5px;
+}
+.app-nav .right-menu ul li:hover .menu-link {
+  color: #4283fc;
+}
+.app-nav .app-header-main {
+  border-right: 1px solid rgba(154, 157, 175, 0.2);
+}
+.app-nav .app-header-main a {
+  color: #4283fc;
+  padding: 14px 25px;
+  font-size: 20px;
+  font-weight: bold;
+  display: block;
+  font-family:"trebuchet ms";
+}
+.app-nav .app-header-sub {
+  color: #4a4a4a;
+  
+ }
+.para{
+	padding-left:3px;
+	font-size:13px;
+	background:#fff;
+	margin:0px;
+	padding-top:10px;
+}
+
+.link-text{
+	font-size:14px;
+	color:#000;
+}
+.link-text:hover{
+	color:#4283fc;
+}
+    
+  /*style for sidebar  */
+
+.app-sidebar {
+  position: fixed;
+  width: 100px;
+  height: calc(100vh - 56px);
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
+  z-index: 1;
+}
+.app-sidebar .side-menu {
+  text-align: center;
+}
+.app-sidebar .side-menu li {
+  font-size: 11px;
+  color: #9a9daf;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(100, 103, 119, 0.1);
+  cursor: pointer;
+}
+.app-sidebar .side-menu li .link {
+  display: block;
+  padding: 11px;
+  border-left: 4px solid transparent;
+}
+.app-sidebar .side-menu li .submenu {
+  position: absolute;
+  z-index: 15;
+  background-color: #ffffff;
+  width: 200px;
+  box-shadow: 3px 3px 4px 0 rgba(0, 0, 0, 0.05);
+  left: 101px;
+  top: 0;
+  display: none;
+}
+
+.app-sidebar .side-menu li .submenu a {
+  display: block;
+  padding: 7px 15px;
+  font-size: 14px;
+  color: #4a4a4a;
+  text-align: left;
+}
+
+.app-sidebar .side-menu li .submenu a:hover {
+  background: #ddd;
+}
+.app-sidebar .side-menu li.active-tab,
+.app-sidebar .side-menu li:hover {
+  color: #4283fc;
+}
+.app-sidebar .side-menu li.active-tab .link,
+.app-sidebar .side-menu li:hover .link {
+  border-left: 4px solid #4283fc;
+}
+
+.app-sidebar .side-menu li:hover .submenu {
+  display: block;
+}
+.app-sidebar .side-menu li i {
+  font-size: 24px;
+}
+.app-sidebar .side-menu li i.rotate {
+  transform: rotate(180deg);
+  display: inline-block;
+}
+
+.mdi-source-fork::before{
+	color:#646777;
+}
+.mdi-source-fork::before:hover{
+	color:#007bff;
+}
+   
+  /*new css for all forms  */  
+   
+ input[type=text] {
+ border-style:none; 
+ padding:4px;
+  display:block;
+  width:100%;
+ 
+  }
+ input{
+   margin-top:6px;
+   }
+ input::placeholder{
+ font-size:15px;
+ padding-left:4px;
+ opacity: 0.7;
+ }
+ .center{
+ text-align:right;
+ }
+ 
+ label{
+	color:#646777;
+	margin:7px 0px;}
+	
+.search{
+ 	background-image: url(../images/baseline_search_black_18dp.png); 
+ 	outline:0;
+ 	height:18px;
+ 	width: 118px;
+ 	left: 5px;
+ 	background-repeat:no-repeat;
+	 
+}
+button{
+	margin:60px 0px;
+	background-color:#4283fc;
+	width:90px;
+	}
+	
+.btn-primary{
+	border-radius:0px;
+ 	font-size:12px;
+}
+
+.btn-primary:hover{
+	background-color:#fff;
+ 	color:#000;
+}  
