@@ -46,16 +46,25 @@
 <script type="text/javascript">
         $(document).ready(function() 
 		{
+        	var modeOfOperation="";
+        	<%if(session.getAttribute("ModeOfOpType")!=null)  
+        	{%>
+        		
+        		modeOfOperation='<%=session.getAttribute("ModeOfOpType").toString()%>';
+        		
+        	<%}%>       		
+        	if(modeOfOperation=='TA')
+        	{
+        		funViewTakeAway();
+        	}	
 	     
 		});
 		function funViewTakeAway()
-		{
-		
+		{		
 			 $("#hidOperationType").val('Take Away');
 			 document.frmModeOfOperation.action = "actionTableClicked.html";//?kotNo="+kotNo
 		  	 document.frmModeOfOperation.method = "POST";
 		     document.frmModeOfOperation.submit();
-		
 		}
 
 </script>

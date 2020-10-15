@@ -233,11 +233,39 @@ public class clsPOSBillingAPIController
 					+ " and a.strClientCode=d.strClientCode and d.strClientCode=c.strClientCode and c.strClientCode=b.strClientCode"
 					+ " and e.strOperational='Y'   AND a.strClientCode='"+clientCode+"'");
 					
+			
 					if(req.getSession().getAttribute("groupCode")!=null)
 					{
 						String groupCode=req.getSession().getAttribute("groupCode").toString();
 						sqlBuilder.append(" and b.strGroupCode='"+groupCode+"' ");
 						req.getSession().removeAttribute("groupCode");
+					}
+					else if(req.getSession().getAttribute("GroupNames")!=null)
+					{
+						String groupNames=req.getSession().getAttribute("GroupNames").toString();
+						String groupNamesForQuerry="";
+						if(groupNames.contains("AND"))
+						{
+							String[] gArrNames= groupNames.split("AND");
+							for(String gNames:gArrNames)
+							{
+								if(groupNamesForQuerry.length()>0)
+								{
+									groupNamesForQuerry +=",'"+gNames+"'";
+								}
+								else
+								{
+									groupNamesForQuerry="'"+gNames+"'";	
+								}
+								
+							}
+						}
+						else
+						{
+							groupNamesForQuerry="'"+groupNames+"'";	
+						}
+						sqlBuilder.append(" and b.strGroupName in ( "+groupNamesForQuerry+" )");
+
 					}
 					else
 					{

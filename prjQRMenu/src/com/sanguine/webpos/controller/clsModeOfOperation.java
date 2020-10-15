@@ -46,6 +46,20 @@ public class clsModeOfOperation
 			System.out.println(posCode);
 			request.getSession().setAttribute("WebQrPOSCode", posCode);
 		}
+		
+		if(request.getParameter("ModeOfOpType")!=null)
+		{
+			String opType = request.getParameter("ModeOfOpType").toString();
+			System.out.println(opType);
+			request.getSession().setAttribute("ModeOfOpType", opType);
+		}
+		
+		if(request.getParameter("GroupNames")!=null)
+		{
+			String groupName = request.getParameter("GroupNames").toString();
+			System.out.println(groupName);
+			request.getSession().setAttribute("GroupNames", groupName);
+		}
 		clsPOSBillSettlementBean obBillSettlementBean = new clsPOSBillSettlementBean();
 		objUserController.welcome(request);
 		ModelAndView objMV=null;

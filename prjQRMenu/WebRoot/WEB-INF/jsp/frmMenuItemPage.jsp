@@ -114,19 +114,12 @@ background-repeat:repeat; } */
 // //	background-image: url('../${pageContext.request.contextPath}/resources/images/item-1.png');
 //	background-image: url('../${pageContext.request.contextPath}/resources/images/item-1.png');
 
+
 $(document).ready(function() 
 		{
-	//funShowMenuHead();
-				//document.body.style.background = "white";
-
-					         funShowItem();
-
-		//	$("#wait").css("display", "block");
-	       var opMode="${operationMode}"
-	  
-
+			   funShowItem();
+	           var opMode="${operationMode}"	  
 			   var tblNo="${tableOp}"
-
 	           if(opMode == 'Take Away')
 	       	   {
 	               $("#operationMode").text("Take Away");
@@ -137,14 +130,21 @@ $(document).ready(function()
 	           }	   
 				var jsonArrForMenuHeads=${command.jsonArrForMenuHeads};	
 				funFillMenuHeadMap(jsonArrForMenuHeads);
-				//var objmenu={};
 				funMenuHeadButtonClicked();
 				document.getElementById("itemCountInMainPage").style.display='none';
+				
+				var gCompanyCode='<%=session.getAttribute("gClientCode").toString()%>';
 
+				if(gCompanyCode=='240.001')
+				{
+					document.getElementById("idShoppingCart").style.display='none';
+					document.getElementById("idHome").style.display='none';
+					document.getElementById("idSideBarPanel").style.display='none';
 
-    
+					
 
-		});
+				}
+			});
 
  function aa()
  {
@@ -161,28 +161,6 @@ function funFillMenuHeadMap(jsonArrForMenuHeads)
 
 }
 
-/* <div class="col-md-12 mt-3 box">
-<div class="card">
-	<div class="card-horizontal">
-    	<div class="img-square-wrapper">
-        	<img class="item-img" src="item-1.jpg" alt="Card image cap">
-    	</div>
-    	<div class="card-body">
-        	<h3 class="card-title">Panner Tikka</h3>
-        	<img class="veg-icon" src="vegicon.png">
-        		<p class="card-text">Some quick example text to build on the card title and</p>
-        	<div class="card-footer">
-    			<small class="price"><span class="mdi mdi-currency-inr"></span>120<i class="mdi mdi-nest-protect"></i>
-				</small>
-			</div>
-			<img src="icons8-plus-24.png" class="plus-icon">
-    	</div>
-	</div>
-</div>
-</div>
-
- */
- 
 
  function funMenuHeadButtonClicked()
 {
@@ -230,12 +208,6 @@ function funFillMenuHeadMap(jsonArrForMenuHeads)
 			    var col2=insertRow.insertCell(1);
 			    var col3=insertRow.insertCell(2);
 			    var col4=insertRow.insertCell(3);
-
-			    
-			    
-				//col1.innerHTML = "<div class=\"vegitem\"><a readonly=\"readonly\" size=\"\" href=\"frmSingleItemPage.html?itemCode="+obj.strItemCode+"\" target=\"_blank\"  class=\"itemName\" \"  id='"+obj.strItemCode+"'  style=\"margin-top:-5px\" onclick=\"funMenuItemClicked(this,"+insertCol+")\" > "+obj.strItemName+" </a></div>";
-				
-				//This will be for with image
 				if(obj.strItemImage.length >0)
 				{
 					col1.innerHTML = "<div class=\"col-md-12 mt-3 box\" style=\"padding-left:0px;margin:30px 0px;\"><div class=\"card\" style=\"border:none;\"><div class=\"card-horizontal\"  style=\"border:none;\"><div class=\"img-square-wrapper\" style=\"height:450px;width:450px;\"><img  src=\"\" readonly=\"readonly\" style=\" margin-top: -20%; height: 134%;\"  class=\"itemName\"  id='itemImage"+obj.strItemCode+"'  onclick=\"funOpenSingleItem(this,'image')\" ></div>"
@@ -246,26 +218,11 @@ function funFillMenuHeadMap(jsonArrForMenuHeads)
 			           + " <div style=\"margin-top:5px;\"><small class=\"price\" style=\"font-size:36px;padding-left:12px; font-weight:700;\"><span class=\"mdi mdi-currency-inr\"></span>"+tmpprice+"<i class=\"mdi mdi-nest-protect\"></i></small></div></div></div></div></div>";
 
 			           funloadItemImage(obj.strItemCode);
-					/* col1.innerHTML = "<div class=\"col-md-12 mt-3 box\"><div class=\"card\"><div class=\"card-horizontal\"><div class=\"img-square-wrapper\"><img  src=\"\" readonly=\"readonly\"   class=\"itemName\"  id='itemImage"+obj.strItemCode+"'  onclick=\"funOpenSingleItem(this)\" ></div>"
-
-			           + " <div class=\"card-body\"><h3 readonly=\"readonly\"   class=\"card-title\" \"  id='"+obj.strItemCode+"'   onclick=\"funOpenSingleItem(this)\"  /> "+obj.strItemName+" </h3>"
-			           + " <p readonly=\"readonly\" size=\"200px\"  class=\"card-text\"   id='"+obj.strItemCode+"' onclick=\"funOpenSingleItem(this)\"   />"+obj.strItemDetails+"</p>"
-
-			           + "  <div class=\"card-footer\"><small class=\"price\"><span class=\"mdi mdi-currency-inr\"></span>"+tmpprice+"<i class=\"mdi mdi-nest-protect\"></i></small></div></div></div></div></div>";
-
-			           
-			           funloadItemImage(obj.strItemCode);
-
- */				}
-				 else{          //			       this is without image
-
-					 col1.innerHTML = "<div class=\"vegitem\"><a readonly=\"readonly\" class=\"itemName\"  id='"+obj.strItemCode+"'  style=\"margin-top:-5px\" onclick=\"funOpenSingleItem(this,'')\" > "+obj.strItemName+" </a><input readonly=\"readonly\" size=\"\"   class=\"itemRate\" id='"+obj.strItemCode+"'style=\"width:100%;left:812px;font-size:37px;position: absolute;font-weight:700;height:30px;\" value='\&#2352;\ "+tmpprice+"' onclick=\"funOpenSingleItem(this,'')\" /></div>";
-/* 			           col2.innerHTML = "<input readonly=\"readonly\" size=\"\"   class=\"itemRate\" id='"+obj.strItemCode+"'style=\"width:100%;font-size:30px;position: absolute;margin-left:-690px;font-weight:700;\" value='\&#2352;\ "+tmpprice+"' onclick=\"funOpenSingleItem(this,'')\" /></td>";
- */		
-				 
-              		
- 
-                  var itemdeatilsCount=obj.strItemDetails.length;
+     			}
+				else{          //			       this is without image
+                       col1.innerHTML = "<div class=\"vegitem\"><a readonly=\"readonly\" class=\"itemName\"  id='"+obj.strItemCode+"'  style=\"margin-top:-5px\" onclick=\"funOpenSingleItem(this,'')\" > "+obj.strItemName+" </a><input readonly=\"readonly\" size=\"\"   class=\"itemRate\" id='"+obj.strItemCode+"'style=\"width:100%;left:812px;font-size:37px;position: absolute;font-weight:700;height:30px;\" value='\&#2352;\ "+tmpprice+"' onclick=\"funOpenSingleItem(this,'')\" /></div>";                      
+                       var itemdeatilsCount=obj.strItemDetails.length;
+                        
 				if(itemdeatilsCount>50)
 				{
 					itemdeatilsCount=itemdeatilsCount -50;
@@ -420,11 +377,11 @@ function funloadItemImage(itemCode)
 					<a href="frmReservation.html">Reservation</a>
 					<a href="frmFeedback.html">Feedback</a>
 				</div>
-				<button class="openbtn" type="button"   onclick="openNav()" style="font-size: 60px;"><i class="mdi mdi-menu" style="font-size: 60px; float: left;padding-right:5px;color: #fff;"></i>Menu</button>
+				<button class="openbtn" id="idSideBarPanel" type="button"   onclick="openNav()" style="font-size: 60px;"><i class="mdi mdi-menu" style="font-size: 60px; float: left;padding-right:5px;color: #fff;"></i>Menu</button>
 				
 				<div class="topnav-right">
-					<a href="frmModeOfOpearation.html"><i class="mdi mdi-home"  style="font-size: 80px;float: right;margin-right: 8%;color: #fff;margin-top: -20%;"  onclick=""></i></a>
-					<a href="#"><i class="mdi mdi-shopping" style="font-size: 78px;float: right;margin-right:-15%;color: #fff;margin-top: -20%;" onclick="funOpenSettlement()"></i></a>
+					<a href="frmModeOfOpearation.html"><i class="mdi mdi-home"  id="idHome" style="font-size: 80px;float: right;margin-right: 8%;color: #fff;margin-top: -20%;"  onclick=""></i></a>
+					<a href="#"><i class="mdi mdi-shopping" id="idShoppingCart" style="font-size: 78px;float: right;margin-right:-15%;color: #fff;margin-top: -20%;" onclick="funOpenSettlement()"></i></a>
 			 		<input type="text" class="numberCircle" readonly="readonly" id="itemCountInMainPage" style="margin-right: -1%;" onclick="funOpenSettlement()" />
 			
 				</div>

@@ -72,8 +72,6 @@ public class clsMainFormWithTableLoad
 	public ModelAndView funOpenForm(Map<String, Object> model, HttpServletRequest request)
 	{
 		
-		ModelAndView objMV=null;
-		ModelAndView mAndV=null;
 		String urlHits = "1",voucherNo="";
 		clsPOSBillSettlementBean obBillSettlementBean = new clsPOSBillSettlementBean();
 		clsSetupHdModel objSetupHdModel=null;

@@ -154,21 +154,10 @@ $(document).ready(function()
 {
 	
     funShowItem();
-   /*  $(document).ajaxStart(function()
-			{
-			    $("#wait").css("display","block");
-			});
-			$(document).ajaxComplete(function()
-			{
-				$("#wait").css("display","none");
-			});
-			$("#wait").css("display", "block"); */
-	 $("#Closer").click(function () {
+    $("#Closer").click(function () {
         $("#dialog").dialog("destroy");
         return false;
-    });
-	
-		
+    });	
 	$(".tab_content").hide();
 	$(".tab_content:first").show();
 	$("ul.tabs li").click(function() {
@@ -959,83 +948,80 @@ function funCalculationForCompItem()
 function funOpenSingleItem(itemCode,onClickName){
 	
 	//alert(itemCode.id);
-	 var title='Single Item Page';
-     document.title=title;
-     var OnliclicktemCode="";
-    if(onClickName=='image')
-    {
-    	
-        OnliclicktemCode=itemCode.id.substring(9,itemCode.id.length);
-
-    }
-    else
-    {
-      OnliclicktemCode=itemCode.id;
-
-    }	
-	document.getElementById("tab1").style.display='none';
-	document.getElementById("tab3").style.display='block';	
+	var gCompanyCode='<%=session.getAttribute("gClientCode").toString()%>';
 	
-	var qty=0;
-	$.each(listPunchedItmeDtl, function(i, obj) 
-	{		
-		qty= qty + obj.quantity; 		 
-	})
-	
-	if(qty==0)
+	if(!(gCompanyCode=='240.001'))
 	{
-		document.getElementById("itemCountInSinglePage").style.display='none'; 
-	}
-	var objMenuItemPricingDtl;
-	var jsonArrForMenuItemPricing=${command.jsonArrForDirectBillerMenuItemPricing};	
+		var title='Single Item Page';
+	     document.title=title;
+	     var OnliclicktemCode="";
+	    if(onClickName=='image')
+	    {
+	    	
+	        OnliclicktemCode=itemCode.id.substring(9,itemCode.id.length);
 
-	$.each(jsonArrForMenuItemPricing, function(i, obj) 
-	{									
-		if(OnliclicktemCode==obj.strItemCode)
-		{
-			objMenuItemPricingDtl=obj;
-		}	
-	});
+	    }
+	    else
+	    {
+	      OnliclicktemCode=itemCode.id;
 
-	var oldQty=0;
-	var amount=0;
-	$.each(listPunchedItmeDtl, function(i, obj) 
-	{		
-		if (OnliclicktemCode == obj.itemCode)
-		{
-			oldQty=obj.quantity; 
-
-		}
-		if (OnliclicktemCode == obj.itemCode || obj.modItemCode==itemCode.id) {
-			amount=parseFloat(amount) + parseFloat(obj.amount);
-		}
+	    }	
+		document.getElementById("tab1").style.display='none';
+		document.getElementById("tab3").style.display='block';	
 		
-	})
-	var amt= parseFloat(objMenuItemPricingDtl.strPriceSunday).toFixed(2);
-	$("#idPrice").text(amt);
+		var qty=0;
+		$.each(listPunchedItmeDtl, function(i, obj) 
+		{		
+			qty= qty + obj.quantity; 		 
+		})
+		
+		if(qty==0)
+		{
+			document.getElementById("itemCountInSinglePage").style.display='none'; 
+		}
+		var objMenuItemPricingDtl;
+		var jsonArrForMenuItemPricing=${command.jsonArrForDirectBillerMenuItemPricing};	
 
-    if(oldQty >0)
-   	{
-   	    $("#txtAddQuantity").val(oldQty);
-   		$("#idPrice").text(amount);
-   	}
-    else
-    {
-    	funDisplayCart();
-    }	
-	
+		$.each(jsonArrForMenuItemPricing, function(i, obj) 
+		{									
+			if(OnliclicktemCode==obj.strItemCode)
+			{
+				objMenuItemPricingDtl=obj;
+			}	
+		});
 
-	
-	//$("#lblItemDesc").text(itemDel);
-	$("#idItemName").text(objMenuItemPricingDtl.strItemName);
-    $("#idDetails").text(objMenuItemPricingDtl.strItemDetails);
-	
-    funLoadModifiers(OnliclicktemCode,amt,onClickName);
+		var oldQty=0;
+		var amount=0;
+		$.each(listPunchedItmeDtl, function(i, obj) 
+		{		
+			if (OnliclicktemCode == obj.itemCode)
+			{
+				oldQty=obj.quantity; 
 
-	
+			}
+			if (OnliclicktemCode == obj.itemCode || obj.modItemCode==itemCode.id) {
+				amount=parseFloat(amount) + parseFloat(obj.amount);
+			}
+			
+		})
+		var amt= parseFloat(objMenuItemPricingDtl.strPriceSunday).toFixed(2);
+		$("#idPrice").text(amt);
 
-
-	
+	    if(oldQty >0)
+	   	{
+	   	    $("#txtAddQuantity").val(oldQty);
+	   		$("#idPrice").text(amount);
+	   	}
+	    else
+	    {
+	    	funDisplayCart();
+	    }	
+		//$("#lblItemDesc").text(itemDel);
+		$("#idItemName").text(objMenuItemPricingDtl.strItemName);
+	    $("#idDetails").text(objMenuItemPricingDtl.strItemDetails);
+		
+	    funLoadModifiers(OnliclicktemCode,amt,onClickName);	
+	}	
 }
 
 function funBackToDashboard(){
